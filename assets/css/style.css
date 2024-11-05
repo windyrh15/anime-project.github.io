@@ -1,0 +1,552 @@
+/* css reset ------------------------------------------------ */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  scroll-behavior: smooth;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ------------------------------------------------------------------------------ */
+
+/* my css */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fafafa;
+  /* color: #333333; */
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Menu-section ---------------------------------------------------------------- */
+.menuBar {
+  height: 70px;
+  width: 100%;
+  padding-left: 3%;
+  padding-right: 3%;
+  color: white;
+  /* background-color: white; */
+  background-color: #333333;
+  border-bottom: 5px solid #a977ffc8;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: fixed;
+  z-index: 10;
+
+  /* Efek Bayangan */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menuBar .hamButton {
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+.menuBar .logo {
+  font-size: 1.8rem;
+  font-family: "Kaushan Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.menuBarContent {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Efek box-shadow */
+  border: 65px solid #a977ffc8;
+
+  /* background-image: url("../images/menuBar.webp");
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  object-fit: cover;
+  background-position-x: 30%;
+  background-position-y: -70%;
+  background-size: 230%; */
+  /* background: linear-gradient(90deg, #7a7a7a, #a571ffc8); */
+  background-color: #333333;
+
+  color: white;
+  position: fixed;
+  z-index: 9;
+  transition: 0.7s ease-in-out;
+  left: -46%;
+  height: 160%; /* Menyesuaikan tinggi dengan tinggi viewport */
+  width: 45vw;
+  transform: rotate(0deg); /* Rotasi awal */
+}
+
+.menuVisible {
+  left: -20%; /* Posisi saat menu terlihat */
+  transform: rotate(-25deg); /* Rotasi saat menu terlihat */
+}
+
+.menuBarContent .MenuLogo,
+.menuBarList {
+  opacity: 0; /* Awalnya tidak terlihat */
+  transition: opacity 0.5s ease-in-out; /* Efek transisi untuk fade-in */
+  transition-delay: 0.4s; /* Delay untuk menunggu .menuBarContent muncul */
+}
+
+.menuVisible .MenuLogo,
+.menuVisible .menuBarList {
+  opacity: 1; /* Terlihat dengan efek fade-in */
+}
+
+.menuBarContent .MenuLogo {
+  display: flex;
+  position: relative;
+  color: white;
+
+  top: 22%;
+  left: 73%;
+  transform: rotate(24.6deg); /* Rotasi awal */
+}
+
+.menuBarContent .MenuLogo img {
+  width: 20%;
+}
+
+.menuBarList {
+  position: relative;
+  display: flex;
+
+  font-size: 2rem;
+  font-family: "Kaushan Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+
+  flex-direction: column;
+  gap: 10px;
+  color: white;
+  top: 44%;
+  left: 65%;
+  transform: rotate(24deg); /* Rotasi awal */
+}
+
+.menuBarList a {
+  text-align: center;
+  width: 14%;
+  text-decoration: none; /* Menghilangkan garis bawah */
+  color: white; /* Warna teks */
+  padding: 10px 15px; /* Ruang di dalam tautan */
+  border-radius: 5px; /* Sudut melengkung */
+  display: block; /* Membuat tautan menempati seluruh lebar */
+
+  transition: color 0.3s ease, margin-left 0.3s ease, border-bottom 0.3s ease; /* Menambahkan efek transisi */
+}
+
+/* Efek hover */
+.menuBarList a:hover {
+  color: #b488ffeb; /* Ubah warna teks saat hover */
+  margin-left: 20px; /* Pindahkan sedikit ke kiri */
+  border-bottom: 2px solid #a977ffc8; /* Menambahkan border bawah */
+}
+
+/* Media query untuk ukuran layar lebih kecil */
+@media (max-width: 768px) {
+  .menuBarContent {
+    width: 90vw; /* Lebar lebih besar di layar kecil */
+  }
+
+  .menuBarContent .textMenuH1,
+  .menuBarList {
+    font-size: 1rem; /* Ukuran font lebih kecil di layar kecil */
+  }
+}
+
+/* Main content-section -------------------------------------------------------- */
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home {
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.home .homeContentLeft {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.home .homeContentLeft .hcLeftH2 {
+  font-size: 4rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: "Kaushan Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+}
+
+.home .homeContentLeft .hcLeftH2 .worldOfAnime {
+  color: #7b30fcf0;
+}
+
+.home .homeContentLeft .hcLeftP {
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.home .homeContentRight {
+  width: 60%;
+  height: 62vh;
+  background-image: url("../images/animeHero.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+}
+
+/* About Section -------------------------------------------------------------- */
+/* Container for About Us Section */
+.about {
+  padding: 50px 20px;
+  margin: 50px auto;
+  text-align: center;
+  /* background-color: #333333; */
+  background-image: url("../images/menuBar.webp");
+  background-size: cover;
+}
+
+/* Title Styling */
+.aboutTitle {
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: "Kaushan Script", cursive;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.aboutSpan {
+  color: #7b30fc; /* Warna ungu untuk bagian "Us" */
+}
+
+.aboutDescription {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Timeline Styling */
+.timeline {
+  display: flex;
+  flex-direction: row; /* Pastikan ini diubah menjadi row */
+  align-items: center;
+  gap: 40px; /* Jarak antar item timeline */
+  position: relative;
+  padding: 40px 50px;
+  overflow-x: auto; /* Agar bisa di-scroll pada layar kecil */
+}
+
+/* Timeline Content */
+.timelineContent {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.timelineTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.timelineContent p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .aboutTitle {
+    font-size: 2.5rem;
+  }
+  .aboutDescription {
+    font-size: 1rem;
+  }
+  .timelineItem {
+    padding-left: 30px;
+  }
+}
+
+/* Gallery Section ------------------------------------------------------------ */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 6 kolom */
+  grid-template-rows: repeat(4, 200px); /* 4 baris */
+  gap: 10px;
+  width: 85%;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+/* Menentukan ukuran dan posisi untuk setiap item */
+.item1 {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+
+.item2 {
+  grid-column: 3 / 5;
+  grid-row: 1 / 2;
+}
+
+.item3 {
+  grid-column: 5 / 7;
+  grid-row: 1 / 3;
+}
+
+.item4 {
+  grid-column: 1 / 3;
+  grid-row: 3 / 5;
+}
+
+.item5 {
+  grid-column: 3 / 5;
+  grid-row: 2 / 4;
+}
+
+/* Tambahan untuk item 6 sampai 11 */
+.item6 {
+  grid-column: 5 / 7;
+  grid-row: 3 / 5;
+}
+
+.item7 {
+  grid-column: 1 / 2;
+  grid-row: 5 / 6;
+}
+
+.item8 {
+  grid-column: 2 / 4;
+  grid-row: 5 / 6;
+}
+
+.item9 {
+  grid-column: 4 / 5;
+  grid-row: 4 / 6;
+}
+
+.item10 {
+  grid-column: 5 / 7;
+  grid-row: 5 / 6;
+}
+
+/* Join Us --------------------------------------------------------------------- */
+.joinUs {
+  text-align: center;
+  padding: 50px;
+  margin-top: 30px;
+}
+
+.joinTitle {
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: "Kaushan Script", cursive;
+  color: #7b30fcf0;
+  margin-bottom: 20px;
+}
+
+.spanJoinTitle {
+  color: #333333;
+}
+
+.joinDescription {
+  font-size: 1.4rem;
+  color: #333;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+}
+
+.joinButton {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #7b30fcf0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.joinButton:hover {
+  background-color: #5d1fb5;
+}
+
+/* Footer-section --------------------------------------------------------------*/
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+  font-size: 1.2rem;
+  font-family: "Kaushan Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+
+  background-color: #333333;
+  width: 100%;
+  height: 100px;
+  margin-top: 50px;
+
+  border-top: 10px solid #7b30fc;
+}
